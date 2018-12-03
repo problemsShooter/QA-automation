@@ -5,29 +5,14 @@
         <classes>
             <class name="practice1.Task1">
                 <methods>
-                    <include name="method"/>
                     <include name="simpleTestEquals"/>
                     <include name="simpleTestNotEquals"/>
                     <include name="simpleTestAssertTrue"/>
                     <include name="simpleTestAssertFalse"/>
                     <include name="simpleSoftTest"/>
                     <include name="simpleParametrisedTest"/>
-
                 </methods>
             </class>
         </classes>
     </test>
-    <!--<test name="numbersXML">-->
-        <!--<parameter name="firstNumber" value="1"/>-->
-        <!--<parameter name="secondNumber" value="1"/>-->
-        <!--<groups>-->
-            <!--<run>-->
-                <!--<include name="math"/>-->
-            <!--</run>-->
-        <!--</groups>-->
-        <!--<classes>-->
-            <!--<class name="practice1.Task1"/>-->
-        <!--</classes>-->
-    <!--</test>-->
-
 </suite>

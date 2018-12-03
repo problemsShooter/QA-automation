@@ -8,43 +8,54 @@ import org.testng.asserts.SoftAssert;
 public class Task1 {
 
 
-
     @BeforeSuite
-    public void beforeSuite(){
+    public void beforeSuite() {
         System.out.println("\nTest1.BeforeSuite");
     }
+
     @BeforeTest
-    public void beforeTest(){
+    public void beforeTest() {
         System.out.println("Test1.BeforeTest");
     }
+
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         System.out.println("Test1.BeforeClass");
     }
+
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         System.out.println("Test1.BeforeMethod");
     }
+
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         System.out.println("Test1.AfterMethod");
     }
+
     @AfterClass
-    public void afterClass(){
+    public void afterClass() {
         System.out.println("Test1.AfterClass");
     }
+
     @AfterTest
-    public void afterTest(){
+    public void afterTest() {
         System.out.println("Test1.AfterTest");
     }
+
     @AfterSuite
-    public void afterSuite(){
+    public void afterSuite() {
         System.out.println("Test1.AfterSuite");
     }
-//    @Test(groups="math")
-//    void method() {
-//        Assert.fail();
-//    }
+
+    @Test
+    @Parameters({"firstNumber"})
+    public void method(int i) {
+        if (i > 0) {
+            System.out.println("Method has failed");
+            Assert.fail();
+        }
+    }
 
     @DataProvider(name = "someDataForEquals")
     public Object[][] simpleDataProvider1() {
@@ -64,13 +75,13 @@ public class Task1 {
         };
     }
 
-    @Test(groups="math",dataProvider = "someDataForEquals")
-    public void simpleTestEquals(Double i, Double j) {
+    @Test(groups = "math", dataProvider = "someDataForEquals", dependsOnMethods = "method")
+        public void simpleTestEquals(Double i, Double j) {
         Assert.assertEquals(i, j, "Provided numbers are not equals");
 
     }
 
-    @Test(groups="math",dataProvider = "someDataForNotEquals")
+    @Test(groups = "math", dataProvider = "someDataForNotEquals")
     public void simpleTestNotEquals(Double i, Double j) {
         Assert.assertNotEquals(i, j, "Provided numbers are not equals");
 
@@ -97,12 +108,12 @@ public class Task1 {
         };
     }
 
-//    @Test(groups = "math", dataProvider = "dataForSoftTest")
-//    public void simpleSoftTest(Double i, Double j) {
-//        SoftAssert softAssert = new SoftAssert();
-//        softAssert.assertEquals(i, j);
-//        softAssert.assertAll();
-//    }
+    @Test(dataProvider = "dataForSoftTest")
+    public void simpleSoftTest(Double i, Double j) {
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(i, j);
+        softAssert.assertAll();
+    }
 
     @Test(groups = "math")
     @Parameters({"firstNumber", "secondNumber"})

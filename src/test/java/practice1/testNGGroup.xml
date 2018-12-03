@@ -1,0 +1,14 @@
+<suite name="Suite1" verbose="1">
+    <test name="numbersXML">
+        <parameter name="firstNumber" value="1"/>
+        <parameter name="secondNumber" value="1"/>
+        <groups>
+            <run>
+                <include name="math"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="practice1.Task1"/>
+        </classes>
+    </test>
+</suite>
