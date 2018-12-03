@@ -75,7 +75,7 @@ public class Task1 {
         };
     }
 
-    @Test(groups = "math", dataProvider = "someDataForEquals", dependsOnMethods = "method")
+    @Test(dataProvider = "someDataForEquals", dependsOnMethods = "method")
         public void simpleTestEquals(Double i, Double j) {
         Assert.assertEquals(i, j, "Provided numbers are not equals");
 

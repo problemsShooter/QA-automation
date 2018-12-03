@@ -1,15 +1,13 @@
 <suite name="Suite1" verbose="1">
-    <test name="numbersXML">
+    <test name="numbers">
         <parameter name="firstNumber" value="1"/>
         <parameter name="secondNumber" value="1"/>
         <classes>
             <class name="practice1.Task1">
                 <methods>
-                    <include name="simpleTestEquals"/>
                     <include name="simpleTestNotEquals"/>
                     <include name="simpleTestAssertTrue"/>
                     <include name="simpleTestAssertFalse"/>
-                    <include name="simpleSoftTest"/>
                     <include name="simpleParametrisedTest"/>
                 </methods>
             </class>
