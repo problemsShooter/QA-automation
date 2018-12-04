@@ -1,0 +1,13 @@
+<suite name="Suite1" verbose = "1">
+    <test name="numbersXML">
+        <parameter name="firstNumber" value="1"/>
+        <parameter name="secondNumber" value="1"/>
+        <classes>
+            <class name="selenium.TestScenario">
+                <methods>
+                    <include name="method"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
