@@ -12,9 +12,13 @@ public class User {
     protected String day;
     protected String year;
     protected String city;
+    protected STATE state;
+    protected String company;
     protected String address;
+    protected String additionalAddress;
     protected String postalCod;
-    protected String phone;
+    protected String additionalInformation;
+    protected String homePhone;
     protected String mobilPhone;
     protected COUNTRY country;
     protected CITY cityOfLiving;
@@ -31,15 +35,33 @@ public class User {
         day = "1";
         year = "1996";
         city = "Volgograd";
+        state = STATE.ARIZONA;
+        company = "new Company";
         address = "Baker 32 street, floor 3";
+        additionalAddress = "Baker 33 street, floor 2";
         postalCod = "99501";
-        phone = "8(999) 99 99 99";
+        additionalInformation = "likes red colour";
+        homePhone = "8(999) 99 99 99";
         mobilPhone = "8 (999) 999 99 99";
         country = COUNTRY.RUSSIA;
         cityOfLiving = CITY.VOLGOGRAD;
     }
 
-    enum MONTH {
+    public enum STATE {//is it good to do enum public?
+        ALASKA("Alaska"),
+        ARIZONA("Arizona"),
+        ALABAMA("Alabama");
+        private String state;
+        STATE(String state){
+            this.state = state;
+        }
+
+        public String getState() {
+            return state;
+        }
+    }
+
+    public enum MONTH {
 
         JANUARY("january"),
         FEBRUARY("february"),
@@ -95,7 +117,11 @@ public class User {
         }
     }
 
-    enum CITY {
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public enum CITY {
         VOLGOGRAD("Volgograd"),
         ROSTOV("Rostov"),
         MOSCOW("Moscow");
@@ -112,6 +138,18 @@ public class User {
 
     public SEX getSex() {
         return sex;
+    }
+
+    public STATE getState() {
+        return state;
+    }
+
+    public String getAdditionalAddress() {
+        return additionalAddress;
+    }
+
+    public String getCompany() {
+        return company;
     }
 
     public String getFirstName() {
@@ -154,8 +192,8 @@ public class User {
         return postalCod;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getHomePhone() {
+        return homePhone;
     }
 
     public String getMobilPhone() {

@@ -1,25 +1,22 @@
-package selenium;
+package selenium.pageObject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-public class PageShopSignIn extends PageShop{
+public class PageShopSignIn extends PageShop {
 
     @FindBy(how = How.XPATH,using = "//*[@id=\"email_create\"]")
-            public WebElement inputEmail;
+            private WebElement inputEmail;
     @FindBy(how = How.XPATH,using = "//*[@id=\"SubmitCreate\"]/span")
             private WebElement buttonCreateAnAccount;
+
+    public static String baseUrl = PageShop.baseUrl + "?controller=authentication&back=my-account";
 
     PageShopSignIn(WebDriver driver){
         super(driver);
     }
-    public static String baseUrl = PageShop.baseUrl + "?controller=authentication&back=my-account";
 
     public static PageShopSignIn open(WebDriver driver){
         driver.navigate().to(baseUrl);
