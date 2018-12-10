@@ -21,15 +21,15 @@ public class TestBase {
 
     @BeforeMethod
     public void beforeMethod() {
-        String exePath = "C:\\Set of program\\driverChrome\\chromedriver.exe";
+        String exePath = "C:\\JetBrains\\ChromeWebDriver\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", exePath);
         driver = new ChromeDriver();
     }
 
     @AfterSuite
     public void afterSuite() {
-//        driver.quit();
-//        driver = null;
+        driver.quit();
+        driver = null;
     }
     @AfterMethod
     public void afterMethod() {

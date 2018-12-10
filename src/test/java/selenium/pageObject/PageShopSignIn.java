@@ -1,9 +1,12 @@
 package selenium.pageObject;
 
+import forProperty.GetPropertyValues;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.io.IOException;
 
 public class PageShopSignIn extends PageShop {
 
@@ -12,7 +15,15 @@ public class PageShopSignIn extends PageShop {
     @FindBy(how = How.XPATH,using = "//*[@id=\"SubmitCreate\"]/span")
             private WebElement buttonCreateAnAccount;
 
-    public static String baseUrl = PageShop.baseUrl + "?controller=authentication&back=my-account";
+    public static String baseUrl;
+
+    static {
+        try {
+            baseUrl = GetPropertyValues.getPropertyValue() + "?controller=authentication&back=my-account";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     PageShopSignIn(WebDriver driver){
         super(driver);
