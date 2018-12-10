@@ -1,7 +1,7 @@
 <suite name="Suite1" verbose = "1">
     <test name="numbersXML">
         <classes>
-            <class name="selenium.tests.TestScenario">
+            <class name="selenium.tests.TestRegistration">
                 <methods>
                     <include name="verifyRegistrationUser"/>
                 </methods>

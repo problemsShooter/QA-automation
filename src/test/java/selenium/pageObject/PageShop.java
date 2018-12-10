@@ -9,11 +9,9 @@ public class PageShop extends PageBase {
      private static String baseUrl;
     static {
         try {
-            baseUrl = GetPropertyValues.getPropertyValue();
+            baseUrl = GetPropertyValues.gettingValuePropertyByKey("relativePath");
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            baseUrl="http://automationpractice.com";
         }
     }
 

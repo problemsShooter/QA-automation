@@ -52,7 +52,8 @@ public class User {
         ARIZONA("Arizona"),
         ALABAMA("Alabama");
         private String state;
-        STATE(String state){
+
+        STATE(String state) {
             this.state = state;
         }
 
@@ -134,6 +135,10 @@ public class User {
         public String getCity() {
             return city;
         }
+    }
+
+    public String getFullName() {
+        return firstName + " " + secondName;
     }
 
     public SEX getSex() {

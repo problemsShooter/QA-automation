@@ -5,12 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class PageShopRegistration extends PageShopSignIn {
+public class PageShopRegistration extends PageShop{
 
+    @FindBy(how = How.XPATH,using = "//*[@id=\"email_create\"]")
+    private WebElement inputEmail;
     @FindBy(how = How.XPATH, using = "//*[@id=\"id_gender1\"]")
-    private WebElement radioBauttonMr;
+    private WebElement radioButtonMr;
     @FindBy(how = How.XPATH, using = "//*[@id=\"id_gender2\"]")
-    private WebElement radioBauttonMrs;
+    private WebElement radioButtonMrs;
     @FindBy(how = How.XPATH, using = "//*[@id=\"customer_firstname\"]")
     private WebElement firstName;
     @FindBy(how = How.XPATH, using = "//*[@id=\"customer_lastname\"]")
@@ -44,7 +46,7 @@ public class PageShopRegistration extends PageShopSignIn {
     @FindBy(how = How.XPATH, using = "//*[@id=\"phone\"]")
     private WebElement homePhone;
     @FindBy(how = How.XPATH, using = "//*[@id=\"phone_mobile\"]")
-    private WebElement mobllePhone;
+    private WebElement mobillePhone;
     @FindBy(how = How.XPATH, using = "//*[@id=\"alias\"]")
     private WebElement asignAddress;
     @FindBy(how = How.XPATH, using = "//*[@id=\"submitAccount\"]/span")
@@ -134,16 +136,16 @@ public class PageShopRegistration extends PageShopSignIn {
         return postalCod;
     }
 
-    public WebElement getRadioBauttonMr() {
-        return radioBauttonMr;
+    public WebElement getRadioButtonMr() {
+        return radioButtonMr;
     }
 
-    public WebElement getRadioBauttonMrs() {
-        return radioBauttonMrs;
+    public WebElement getRadioButtonMrs() {
+        return radioButtonMrs;
     }
 
-    public WebElement getMobllePhone() {
-        return mobllePhone;
+    public WebElement getMobillePhone() {
+        return mobillePhone;
     }
 
     public WebElement getAsignAddress() {

@@ -10,51 +10,50 @@ import java.io.IOException;
 
 public class PageShopSignIn extends PageShop {
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"email_create\"]")
-            private WebElement inputEmail;
-    @FindBy(how = How.XPATH,using = "//*[@id=\"SubmitCreate\"]/span")
-            private WebElement buttonCreateAnAccount;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"email_create\"]")
+    private WebElement inputEmail;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"SubmitCreate\"]/span")
+    private WebElement buttonCreateAnAccount;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span")
+    private WebElement btnMyAccount;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"header\"]/div[2]/div/div/nav/div[2]/a")
+    private WebElement btnSignOut;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"center_column\"]/div/div[1]/ul/li[4]/a/span")
+    private WebElement btnMyPersonalInformation;
 
     public static String baseUrl;
 
     static {
         try {
-            baseUrl = GetPropertyValues.getPropertyValue() + "?controller=authentication&back=my-account";
+            baseUrl = GetPropertyValues.gettingValuePropertyByKey("registrationPath");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    PageShopSignIn(WebDriver driver){
+    PageShopSignIn(WebDriver driver) {
         super(driver);
     }
 
-    public static PageShopSignIn open(WebDriver driver){
+    public static PageShopSignIn open(WebDriver driver) {
         driver.navigate().to(baseUrl);
         return new PageShopSignIn(driver);
     }
-//    @Test
-//    public void simpleTest() {
-//        PageShopSignIn pageShopSignIn = PageFactory.initElements( super.driver,PageShopSignIn.class);
-//        pageShopSignIn.
-//        inputEmail.sendKeys("qweqaz@mail.ru");
-//        buttonCreateAnAccount.click();
-//        Assert.assertNotNull(driver.findElement(By.xpath("//*[@id=\"noSlide\"]/h1")));
-//    }
 
     public WebElement getInputEmail() {
         return inputEmail;
     }
 
-    public void setInputEmail(WebElement inputEmail) {
-        this.inputEmail = inputEmail;
-    }
 
     public WebElement getButtonCreateAnAccount() {
         return buttonCreateAnAccount;
     }
 
-    public void setButtonCreateAnAccount(WebElement buttonCreateAnAccount) {
-        this.buttonCreateAnAccount = buttonCreateAnAccount;
+    public WebElement getBtnMyAccount() {
+        return btnMyAccount;
+    }
+
+    public WebElement getBtnSignOut() {
+        return btnSignOut;
     }
 }
