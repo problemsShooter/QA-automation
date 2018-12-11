@@ -1,4 +1,5 @@
 <suite name="Suite1" verbose = "1">
+    <parameter name="dataFile" value="src\test\java\selenium\data\dataUsers.json"/>
     <test name="numbersXML">
         <classes>
             <class name="selenium.tests.TestRegistration">

@@ -71,6 +71,10 @@ public class PageShopRegistration extends PageShop{
         return firstName;
     }
 
+    public WebElement getInputEmail() {
+        return inputEmail;
+    }
+
     public WebElement getHomePhone() {
         return homePhone;
     }

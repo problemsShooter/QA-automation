@@ -1,7 +1,11 @@
 package models;
 
+import lombok.*;
 import net.bytebuddy.utility.RandomString;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     protected SEX sex;
     protected String firstName;
@@ -118,10 +122,6 @@ public class User {
         }
     }
 
-    public String getAdditionalInformation() {
-        return additionalInformation;
-    }
-
     public enum CITY {
         VOLGOGRAD("Volgograd"),
         ROSTOV("Rostov"),
@@ -139,77 +139,5 @@ public class User {
 
     public String getFullName() {
         return firstName + " " + secondName;
-    }
-
-    public SEX getSex() {
-        return sex;
-    }
-
-    public STATE getState() {
-        return state;
-    }
-
-    public String getAdditionalAddress() {
-        return additionalAddress;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public MONTH getMonth() {
-        return month;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPostalCod() {
-        return postalCod;
-    }
-
-    public String getHomePhone() {
-        return homePhone;
-    }
-
-    public String getMobilPhone() {
-        return mobilPhone;
-    }
-
-    public COUNTRY getCountry() {
-        return country;
-    }
-
-    public CITY getCityOfLiving() {
-        return cityOfLiving;
     }
 }
