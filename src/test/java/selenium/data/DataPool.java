@@ -1,42 +1,63 @@
 package selenium.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import models.User;
+import models.FromJson;
+import processing.data.JSONArray;
+import processing.data.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class DataPool {
-    Collection<User> users;
+import static processing.core.PApplet.loadJSONObject;
 
-    public void processDataFile(String filePath) {
-        users = new ArrayList<User>();
-        ObjectMapper objectMapper = new ObjectMapper();
-        DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-        objectMapper.setDateFormat(date);
+public class DataPool<T extends FromJson<T> > {
+    Collection<T> collection;
+    final Class<T> typeParameterClass;
 
-        try{
-            User user = objectMapper.readValue(new File(filePath),User.class);
-            users.add(user);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-
+    public DataPool(Class<T> typeParameterClass) {
+        this.typeParameterClass = typeParameterClass;
     }
 
-    public Object[][] getData(String criteria) {
-        Object[][] data = new Object[users.size()][1];
-        Iterator<User> it = users.iterator();
+    public void processDataFile( T typeGeneric,String filePath, String key) {
+        JSONObject jsonObject;
+        File file = new File(filePath);
+        jsonObject = loadJSONObject(file);
+
+        JSONArray jsonArray;
+        jsonArray = jsonObject.getJSONArray(key);
+
+        collection = new ArrayList<T>(jsonArray.size());
+        for(int i = 0; i<jsonArray.size(); i++){
+            try{
+                jsonObject = jsonArray.getJSONObject(i);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                continue;
+            }
+            T type = typeGeneric.fromJson(jsonObject);//it would better to do this without typeGeneric
+
+            if(type!=null){
+                collection.add(type);
+            }
+        }
+    }
+
+    public Object[] getData(/*String criteria*/) {
+        Object[] data = new Object[collection.size()];
+        Iterator<T> it = collection.iterator();
         int i = 0;
         while (it.hasNext()) {
-            data[i][0] = it.next();
+            data[i] = it.next();
             i++;
         }
         return data;
+    }
+
+    public Collection<T> getCollection() {
+        return collection;
     }
 }

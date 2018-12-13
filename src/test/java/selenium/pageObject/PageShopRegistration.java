@@ -1,10 +1,11 @@
 package selenium.pageObject;
 
+import lombok.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
+@Data
 public class PageShopRegistration extends PageShop{
 
     @FindBy(how = How.XPATH,using = "//*[@id=\"email_create\"]")
@@ -67,92 +68,4 @@ public class PageShopRegistration extends PageShop{
         return driver.getTitle();
     }
 
-    public WebElement getFirstName() {
-        return firstName;
-    }
-
-    public WebElement getInputEmail() {
-        return inputEmail;
-    }
-
-    public WebElement getHomePhone() {
-        return homePhone;
-    }
-
-    public WebElement getState() {
-        return state;
-    }
-
-    public WebElement getSecondName() {
-        return secondName;
-    }
-
-    public WebElement getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public WebElement getPassword() {
-        return password;
-    }
-
-    public WebElement getAdditionalAddress() {
-        return additionalAddress;
-    }
-
-    public WebElement getDayOfBirthday() {
-        return dayOfBirthday;
-    }
-
-    public WebElement getMonthOfBirthday() {
-        return monthOfBirthday;
-    }
-
-    public WebElement getYearOfBirthday() {
-        return yearOfBirthday;
-    }
-
-    public WebElement getRadioBtnNews() {
-        return radioBtnNews;
-    }
-
-    public WebElement getRadioBtnOptin() {
-        return radioBtnOptin;
-    }
-
-    public WebElement getCompany() {
-        return company;
-    }
-
-    public WebElement getButtonRegister() {
-        return buttonRegister;
-    }
-
-    public WebElement getAddress() {
-        return address;
-    }
-
-
-    public WebElement getCity() {
-        return city;
-    }
-
-    public WebElement getPostalCod() {
-        return postalCod;
-    }
-
-    public WebElement getRadioButtonMr() {
-        return radioButtonMr;
-    }
-
-    public WebElement getRadioButtonMrs() {
-        return radioButtonMrs;
-    }
-
-    public WebElement getMobillePhone() {
-        return mobillePhone;
-    }
-
-    public WebElement getAsignAddress() {
-        return asignAddress;
-    }
 }

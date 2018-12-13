@@ -41,7 +41,7 @@ public final class Registration {
         page.getAdditionalInformation().sendKeys(user.getAdditionalInformation());
         page.getHomePhone().sendKeys(user.getHomePhone());
         page.getMobillePhone().sendKeys(user.getMobilPhone());
-        page.getAsignAddress().sendKeys(user.getCityOfLiving().getCity());
+        page.getAsignAddress().sendKeys(user.getAssignAnAddressAliasForFutureReference());
         page.getCompany().sendKeys(user.getCompany());
         page.getButtonRegister().click();
 

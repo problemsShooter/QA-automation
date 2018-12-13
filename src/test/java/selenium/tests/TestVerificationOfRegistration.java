@@ -9,7 +9,7 @@ import selenium.pageObject.PageShopRegistration;
 
 public class TestVerificationOfRegistration extends TestBase{
 
-    @Test(dataProvider = "users", dataProviderClass = DataUsers.class)
+    @Test(dataProvider = "users", dataProviderClass = TestCreateListUsers.class)
     public void testVerificationOfRegistration(User user) {
         //PageShopRegistration page = PageShopRegistration.open(driver);
         //Assert.assertEquals(CheckVerification.checkMyPersonalInformation(page,user));

@@ -4,7 +4,9 @@ import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import selenium.data.DataPool;
 import selenium.data.DataUsers;
 import selenium.pageObject.PageShopRegistration;
 import selenium.actions.Registration;
@@ -14,7 +16,12 @@ public class TestRegistration extends TestBase {
     private static final Logger LOGGER = LogManager.getLogger(
             TestRegistration.class.getName());
 
-    @Test(dataProvider = "users", dataProviderClass = DataUsers.class)
+    @DataProvider(name = "users")
+    private Object[] dataProvider(){
+        return dataUsersPool.getData();
+    }
+
+    @Test(dataProvider = "users")
     public void verifyUserRegistration(User user) {
         LOGGER.info("Info Message: verifyUserRegistration has been run !!!");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
@@ -30,7 +37,7 @@ public class TestRegistration extends TestBase {
         LOGGER.info("input necessary fields for registration");
         Registration.registration(pageShopRegistration, user);
 
-        Assert.assertEquals(user.getFullName(),pageShopSignIn.getBtnMyAccount().getText(), "verifyTestRegistration is false");
+        Assert.assertEquals(user.getFullName(), pageShopSignIn.getBtnMyAccount().getText(), "verifyTestRegistration is false");
         LOGGER.info("registration finished with success");
     }
 }

@@ -1,13 +1,14 @@
 package selenium.pageObject;
 
 import forProperty.GetPropertyValues;
+import lombok.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import java.io.IOException;
-
+@Data
 public class PageShopSignIn extends PageShop {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"email_create\"]")
@@ -20,6 +21,13 @@ public class PageShopSignIn extends PageShop {
     private WebElement btnSignOut;
     @FindBy(how = How.XPATH, using = "//*[@id=\"center_column\"]/div/div[1]/ul/li[4]/a/span")
     private WebElement btnMyPersonalInformation;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"email\"]")
+    private WebElement inputEmailForSignIn;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"passwd\"]")
+    private WebElement password;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"SubmitLogin\"]/span")
+    private WebElement btnSignIn;
 
     public static String baseUrl;
 
@@ -40,20 +48,4 @@ public class PageShopSignIn extends PageShop {
         return new PageShopSignIn(driver);
     }
 
-    public WebElement getInputEmail() {
-        return inputEmail;
-    }
-
-
-    public WebElement getButtonCreateAnAccount() {
-        return buttonCreateAnAccount;
-    }
-
-    public WebElement getBtnMyAccount() {
-        return btnMyAccount;
-    }
-
-    public WebElement getBtnSignOut() {
-        return btnSignOut;
-    }
 }
