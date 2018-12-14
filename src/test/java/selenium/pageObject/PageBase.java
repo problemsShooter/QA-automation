@@ -1,33 +1,37 @@
 package selenium.pageObject;
 
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class PageBase {
-     protected   WebDriver driver;
+    protected WebDriver driver;
 
     public PageBase(WebDriver driver) {
         //PageFactory.initElements(driver, PageShopSignIn.class);
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void waitUntilLoaded(){
+
+    public void waitUntilLoaded() {
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
     }
 
-    public void click(WebElement element){
+    public void click(WebElement element) {
         element.click();
     }
 
-    public void writeText(By elementLocation, String text){
+    public void writeText(By elementLocation, String text) {
         driver.findElement(elementLocation).sendKeys(text);
     }
 
-    public String readText(By elementLocation){
+    public String readText(By elementLocation) {
         return driver.findElement(elementLocation).getText();
     }
 

@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import selenium.data.DataPool;
 import selenium.data.DataUsers;
+import selenium.pageObject.PageBase;
+import selenium.pageObject.PageShop;
 import selenium.pageObject.PageShopRegistration;
 import selenium.actions.Registration;
 import selenium.pageObject.PageShopSignIn;
@@ -26,7 +28,7 @@ public class TestRegistration extends TestBase {
         LOGGER.info("Info Message: verifyUserRegistration has been run !!!");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
         LOGGER.info("page ShopSignIn was opened.");
-        pageShopSignIn.getInputEmail().sendKeys(user.getEmail());
+        pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
         LOGGER.info("input email address");
         pageShopSignIn.getButtonCreateAnAccount().click();
         LOGGER.info("press button createAnAccount");
@@ -37,7 +39,7 @@ public class TestRegistration extends TestBase {
         LOGGER.info("input necessary fields for registration");
         Registration.registration(pageShopRegistration, user);
 
-        Assert.assertEquals(user.getFullName(), pageShopSignIn.getBtnMyAccount().getText(), "verifyTestRegistration is false");
+        Assert.assertEquals(user.getFullName(), pageShopSignIn.getHeaderOfPage().getBtnMyAccount().getText(), "verifyTestRegistration is false");
         LOGGER.info("registration finished with success");
     }
 }

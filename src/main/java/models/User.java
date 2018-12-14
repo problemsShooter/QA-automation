@@ -20,10 +20,11 @@ public class User implements FromJson<User> {
     protected String secondName;
     protected String email;
     protected String password;
-
     protected MONTH month;
     protected String day;
     protected String year;
+    protected boolean signUpForOurNewsletter;
+    protected boolean receiveSpecialOffersFromOurPartners;
     protected String company;
     protected String address;
     protected String additionalAddress;
@@ -35,6 +36,14 @@ public class User implements FromJson<User> {
     protected String homePhone;
     protected String mobilPhone;
     protected String assignAnAddressAliasForFutureReference;
+
+    public boolean isSignUpForOurNewsletter() {
+        return signUpForOurNewsletter;
+    }
+
+    public boolean isReceiveSpecialOffersFromOurPartners() {
+        return receiveSpecialOffersFromOurPartners;
+    }
 
     public User fromJson(JSONObject json) {
         String str = json.toString();
@@ -67,15 +76,17 @@ public class User implements FromJson<User> {
         additionalInformation = "likes red colour";
         homePhone = "8(999) 99 99 99";
         mobilPhone = "8 (999) 999 99 99";
-        country = COUNTRY.RUSSIA;
+        country = COUNTRY.NON;
         assignAnAddressAliasForFutureReference = "Volgograd";
     }
 
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     public enum STATE {//is it good to do enum public?
+        NON("-"),
+        ALABAMA("Alabama"),
         ALASKA("Alaska"),
-        ARIZONA("Arizona"),
-        ALABAMA("Alabama");
+        ARIZONA("Arizona");
+
         private String state;
 
         STATE(String state) {
@@ -88,7 +99,7 @@ public class User implements FromJson<User> {
     }
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     public enum MONTH {
-
+        NON("nothing"),
         JANUARY("january"),
         FEBRUARY("february"),
         MARCH("march"),
@@ -128,8 +139,8 @@ public class User implements FromJson<User> {
         }
     }
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-    enum COUNTRY {
-        RUSSIA("Russia"),
+    public enum COUNTRY {
+        NON("-"),
         UNITED_STATES("United States");
 
         private String country;
@@ -138,14 +149,14 @@ public class User implements FromJson<User> {
             this.country = country;
         }
 
-        public COUNTRY getCountry(String string) {
+        public COUNTRY getCountry(String string) {//it would better to rewrite it
             int i;
             if (string.equals("Russia")) i = 0;
             else if (string.equals("United States")) i = 1;
             else i = 1;
             switch (i) {
                 case 0:
-                    return RUSSIA;
+                    return NON;
                 case 1:
                     return UNITED_STATES;
                 default:

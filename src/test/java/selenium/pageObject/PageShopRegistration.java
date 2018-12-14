@@ -8,28 +8,12 @@ import org.openqa.selenium.support.How;
 @Data
 public class PageShopRegistration extends PageShop{
 
-    @FindBy(how = How.XPATH,using = "//*[@id=\"email_create\"]")
-    private WebElement inputEmail;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"id_gender1\"]")
-    private WebElement radioButtonMr;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"id_gender2\"]")
-    private WebElement radioButtonMrs;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"customer_firstname\"]")
-    private WebElement firstName;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"customer_lastname\"]")
-    private WebElement secondName;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"passwd\"]")
-    private WebElement password;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"days\"]")
-    private WebElement dayOfBirthday;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"months\"]")
-    private WebElement monthOfBirthday;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"years\"]")
-    private WebElement yearOfBirthday;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"newsletter\"]")
-    private WebElement radioBtnNews;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"optin\"]")
-    private WebElement radioBtnOptin;
+    //private HeaderOfPage headerOfPage
+
+
+    private PagePersonalInformation personInfo = new PagePersonalInformation(driver);
+
+
     @FindBy(how = How.XPATH, using = "//*[@id=\"address1\"]")
     private WebElement address;
     @FindBy(how = How.XPATH, using = "//*[@id=\"address2\"]")
@@ -42,6 +26,8 @@ public class PageShopRegistration extends PageShop{
     private WebElement state;
     @FindBy(how = How.XPATH, using = "//*[@id=\"postcode\"]")
     private WebElement postalCod;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"id_country\"]")
+    private WebElement country;
     @FindBy(how = How.XPATH, using = "//*[@id=\"other\"]")
     private WebElement additionalInformation;
     @FindBy(how = How.XPATH, using = "//*[@id=\"phone\"]")

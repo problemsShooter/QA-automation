@@ -45,6 +45,10 @@ public class TestBase {
     public void afterTest() {
 
     }
+    @BeforeTest
+    public void beforeTest() {
+
+    }
 
 
 
