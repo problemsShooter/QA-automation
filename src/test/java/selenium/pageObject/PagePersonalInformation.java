@@ -42,6 +42,8 @@ public class PagePersonalInformation extends PageBase {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"center_column\"]/ul/li[1]/a/span")
     private WebElement btnToYourAccount;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"center_column\"]/div/form/fieldset/div[11]/button/span")
+    private WebElement btnSave;
 
 
     public PagePersonalInformation(WebDriver driver){

@@ -4,7 +4,7 @@
       "sex": "MR",
       "firstName": "Iv",
       "secondName": "Iv",
-      "email": "Ivvvvvvvvvvvvcvvvcvvcvvvcvvvvvvvvvvvvvvvvvvvvvv.Iv@mail.ru",
+      "email": "Ivvvvcvvcvvvvvvcvvvcvvcvvvcvvvvvvvvvvvvvvvvvvvcvvv.Iv@mail.ru",
       "password": "password",
       "month": "JANUARY",
       "day": "28",
@@ -22,6 +22,31 @@
       "mobilPhone": "8 (999) 666 66 66",
       "country": "UNITED_STATES",
       "assignAnAddressAliasForFutureReference": "assign"
+    }
+  ],
+  "usersForEditData": [
+    {
+      "sex": "MR",
+      "firstName": "Ser",
+      "secondName": "Petrov",
+      "email": "Ivvvvvvvvvvvvcvvvcvvcvvvcvvvvvvvvvvvvvvvvvvvvvv.Iv@mail.ru",
+      "password": "password",
+      "month": "JANUARY",
+      "day": "28",
+      "year": 1990,
+      "signUpForOurNewsletter": false,
+      "receiveSpecialOffersFromOurPartners": true,
+      "city": "city1",
+      "state": "ALASKA",
+      "company": "company1",
+      "address": "address1",
+      "additionalAddress": "additionalAddress1",
+      "postalCod": "56748",
+      "additionalInformation": "additionalInformation1",
+      "homePhone": "8 (999) 66 66 67",
+      "mobilPhone": "8 (999) 666 66 67",
+      "country": "UNITED_STATES",
+      "assignAnAddressAliasForFutureReference": "assign1"
     }
   ]
 }

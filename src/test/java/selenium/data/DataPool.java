@@ -1,12 +1,10 @@
 package selenium.data;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import models.FromJson;
 import processing.data.JSONArray;
 import processing.data.JSONObject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -46,7 +44,7 @@ public class DataPool<T extends FromJson<T> > {
         }
     }
 
-    public Object[] getData(/*String criteria*/) {
+    public Object[] getData() {
         Object[] data = new Object[collection.size()];
         Iterator<T> it = collection.iterator();
         int i = 0;

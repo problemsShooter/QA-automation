@@ -37,20 +37,11 @@ public class User implements FromJson<User> {
     protected String mobilPhone;
     protected String assignAnAddressAliasForFutureReference;
 
-    public boolean isSignUpForOurNewsletter() {
-        return signUpForOurNewsletter;
-    }
-
-    public boolean isReceiveSpecialOffersFromOurPartners() {
-        return receiveSpecialOffersFromOurPartners;
-    }
-
     public User fromJson(JSONObject json) {
-        String str = json.toString();
         ObjectMapper objectMapper = new ObjectMapper();
         User user = null;
         try {
-            user = objectMapper.readValue(str, User.class);
+            user = objectMapper.readValue(json.toString(), User.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -172,16 +163,6 @@ public class User implements FromJson<User> {
     public String getFullName() {
         return firstName + " " + secondName;
     }
-
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "name='" + firstName + '\'' +
-//                ", surname='" + secondName + '\'' +
-//               // ", sex='" + sex.getSex() + '\'' +
-//                ", day='" + day + '\'' +
-//                '}';
-//    }
 
     @Override
     public String toString() {

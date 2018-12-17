@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose = "1">
+    <test name="numbersXML">
+
+        <classes>
+            <class name="selenium.tests.TestRegistration">
+                <methods>
+                    <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
+                    <parameter name="keyTypeUsersForCheck" value="users"/>
+                    <include name="verifyUserRegistration"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

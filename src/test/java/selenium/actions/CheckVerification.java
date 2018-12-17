@@ -34,22 +34,19 @@ public class CheckVerification {
     public static SoftAssert checkMyPersonalAddress(PagePersonalAddress page, User user) {
         LOGGER.info("started check PersonalAddress");
         SoftAssert softAssert = new SoftAssert();
-        LOGGER.info("check firstName, secondName");
-        softAssert.assertEquals(page.getFirstName().getText(),user.getFirstName());
-        softAssert.assertEquals(page.getSecondName().getText(),user.getSecondName());
         LOGGER.info("check address and additional address");
-        softAssert.assertEquals(page.getAddress().getText(),user.getAddress());
-        softAssert.assertEquals(page.getAdditionalAddress().getText(),user.getAdditionalAddress());
+        softAssert.assertEquals(page.getAddress().getAttribute("value"),user.getAddress());
+        softAssert.assertEquals(page.getAdditionalAddress().getAttribute("value"),user.getAdditionalAddress());
 
         LOGGER.info("check city, state and postcode");
-        softAssert.assertEquals(page.getCity().getText(),user.getCity()+",");
-        softAssert.assertEquals(page.getState().getText(),user.getState().getState());
-        softAssert.assertEquals(page.getPostalCod().getText(),user.getPostalCod());
+        softAssert.assertEquals(page.getCity().getAttribute("value"),user.getCity());
+        softAssert.assertEquals(page.getState().getAttribute("value"),String.valueOf(user.getState().ordinal()));
+        softAssert.assertEquals(page.getPostalCod().getAttribute("value"),user.getPostalCod());
 
         LOGGER.info("check country, homePhone, mobilePhone");
-        softAssert.assertEquals(page.getCountry().getText(),user.getCountry().getCountry());
-        softAssert.assertEquals(page.getHomePhone().getText(),user.getHomePhone());
-        softAssert.assertEquals(page.getMobillePhone().getText(),user.getMobilPhone());
+        softAssert.assertEquals(page.getCountry().getAttribute("value"),String.valueOf(user.getCountry().ordinal()+20));
+        softAssert.assertEquals(page.getHomePhone().getAttribute("value"),user.getHomePhone());
+        softAssert.assertEquals(page.getMobilePhone().getAttribute("value"),user.getMobilPhone());
 
         return softAssert;
     }

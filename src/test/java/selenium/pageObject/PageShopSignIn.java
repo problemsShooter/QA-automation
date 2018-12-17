@@ -13,10 +13,6 @@ public class PageShopSignIn extends PageShop {
 
     private HeaderOfPage headerOfPage = new HeaderOfPage(driver);
     private PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);
-   /* @FindBy(how = How.XPATH, using = "//*[@id=\"email_create\"]")
-    private WebElement inputEmail;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"passwd\"]")
-    private WebElement password;*/
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"SubmitCreate\"]/span")
     private WebElement buttonCreateAnAccount;
@@ -28,13 +24,11 @@ public class PageShopSignIn extends PageShop {
     @FindBy(how = How.XPATH, using = "//*[@id=\"email\"]")
     private WebElement inputEmailForSignIn;
 
-
-
     public static String baseUrl;
 
     static {
         try {
-            baseUrl = GetPropertyValues.gettingValuePropertyByKey("registrationPath");
+            baseUrl = GetPropertyValues.gettingValuePropertyByKey("pageSignInPath");
         } catch (IOException e) {
             e.printStackTrace();
         }
