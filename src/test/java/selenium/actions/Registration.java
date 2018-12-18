@@ -12,6 +12,7 @@ public final class Registration {
 
         FillPersonalData.fillPersonalData(page,user);
         FillPersonalAddress.fillPersonalAddress(page,user);
+        page.getButtonRegister().click();
 
     }
 }

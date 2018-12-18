@@ -17,6 +17,8 @@ public class FillPersonalData {
         if(user.getSex().getSex().equals("Mrs"))page.getPersonInfo().getRadioButtonMrs().click();
         page.getPersonInfo().getFirstName().sendKeys(user.getFirstName());
         page.getPersonInfo().getSecondName().sendKeys(user.getSecondName());
+        page.getPersonInfo().getInputEmail().clear();
+        page.getPersonInfo().getInputEmail().sendKeys(user.getEmail());
         page.getPersonInfo().getPassword().sendKeys(user.getPassword());
 
         LOGGER.info("input birthday's day");

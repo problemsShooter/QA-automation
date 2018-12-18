@@ -13,7 +13,7 @@ public class FillPersonalAddress {
             FillPersonalAddress.class.getName());
 
     public static void fillPersonalAddress(PageShopRegistration page, User user) {
-
+        page.getPersonalAddress().getAdditionalInformation().clear();
         LOGGER.info("input phone address and other fields");
         page.getPersonalAddress().getAddress().sendKeys(user.getAddress());
         page.getPersonalAddress().getAdditionalAddress().sendKeys(user.getAdditionalAddress());
@@ -28,9 +28,8 @@ public class FillPersonalAddress {
         page.getPersonalAddress().getAdditionalInformation().sendKeys(user.getAdditionalInformation());
         page.getPersonalAddress().getHomePhone().sendKeys(user.getHomePhone());
         page.getPersonalAddress().getMobilePhone().sendKeys(user.getMobilPhone());
-        page.getPersonalAddress().getAsignAddress().sendKeys(user.getAssignAnAddressAliasForFutureReference());
+        //page.getPersonalAddress().getAsignAddress().sendKeys(user.getAssignAnAddressAliasForFutureReference());
         page.getPersonalAddress().getCompany().sendKeys(user.getCompany());
-        page.getButtonRegister().click();
     }
 
     public static void editPersonalAddress(PagePersonalAddress page, User user) {

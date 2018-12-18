@@ -114,6 +114,7 @@ public class User implements FromJson<User> {
             return month;
         }
     }
+
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     public enum SEX {
         MR("Mr"),
@@ -124,10 +125,10 @@ public class User implements FromJson<User> {
         SEX(String sex) {
             this.sex = sex;
         }
-
         public String getSex() {
             return sex;
         }
+
     }
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     public enum COUNTRY {
