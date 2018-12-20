@@ -19,7 +19,7 @@ public class TestEditAccountData extends TestBase{
     public void testEditAccountData(User user) {
         LOGGER.info("Started edit data");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
-        pageShopSignIn.waitUntilLoaded();
+        pageShopSignIn.waitForPageLoading(5);
         pageShopSignIn.getInputEmailForSignIn().sendKeys(user.getEmail());
         pageShopSignIn.getPagePersonalInformation().getPassword().sendKeys(user.getPassword());
         pageShopSignIn.getHeaderOfPage().getBtnSignIn().click();
@@ -27,7 +27,7 @@ public class TestEditAccountData extends TestBase{
 
         pageShopSignIn.getBtnMyPersonalInformation().click();
         PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);
-        pagePersonalInformation.waitUntilLoaded();
+        pagePersonalInformation.waitForPageLoading(5);
 
         EditDataUsers.editPersonalInfo(pagePersonalInformation, user);
         pagePersonalInformation.getBtnToYourAccount().click();
@@ -35,7 +35,7 @@ public class TestEditAccountData extends TestBase{
 
         PagePersonalAddress pagePersonalAddress = new PagePersonalAddress(driver);
         pagePersonalAddress.getBtnUpdate().click();
-        pagePersonalAddress.waitUntilLoaded();
+        pagePersonalAddress.waitForPageLoading(5);
         EditDataUsers.editPersonalAddress(pagePersonalAddress,user);
 
 

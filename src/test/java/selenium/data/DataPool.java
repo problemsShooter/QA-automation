@@ -13,7 +13,7 @@ import static processing.core.PApplet.loadJSONObject;
 
 public class DataPool<T extends FromJson<T> > {
     Collection<T> collection;
-    final Class<T> typeParameterClass;
+    Class<T> typeParameterClass;
 
     public DataPool(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
@@ -36,6 +36,7 @@ public class DataPool<T extends FromJson<T> > {
                 e.printStackTrace();
                 continue;
             }
+            //T type1 = T.;
             T type = typeGeneric.fromJson(jsonObject);//it would better to do this without typeGeneric
 
             if(type!=null){

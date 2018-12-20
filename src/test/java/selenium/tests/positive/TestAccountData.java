@@ -19,7 +19,7 @@ public class TestAccountData extends TestBase{
     public void verifyUserAccountData(User user){
         LOGGER.info("Started verify registration");
         PageShopSignIn page = PageShopSignIn.open(driver);
-        page.waitUntilLoaded();
+        page.waitForPageLoading(5);
         page.getInputEmailForSignIn().sendKeys(user.getEmail());
         page.getPagePersonalInformation().getPassword().sendKeys(user.getPassword());
         page.getHeaderOfPage().getBtnSignIn().click();
@@ -27,14 +27,14 @@ public class TestAccountData extends TestBase{
 
         page.getBtnMyPersonalInformation().click();
         PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);
-        pagePersonalInformation.waitUntilLoaded();
+        pagePersonalInformation.waitForPageLoading(5);
         CheckVerification.checkMyPersonalInformation(pagePersonalInformation,user).assertAll();
 
         pagePersonalInformation.getBtnToYourAccount().click();
 
         page.getBtnMyAddress().click();
         PagePersonalAddress pagePersonalAddress = new PagePersonalAddress(driver);
-        pagePersonalAddress.waitUntilLoaded();
+        pagePersonalAddress.waitForPageLoading(5);
         pagePersonalAddress.getBtnUpdate().click();
 
         CheckVerification.checkMyPersonalAddress(pagePersonalAddress,user).assertAll();

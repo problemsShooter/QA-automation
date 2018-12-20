@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 
 import java.io.IOException;
 @Data
-public class PageShopSignIn extends PageShop {
+public class PageShopSignIn extends PageBase {
 
     private HeaderOfPage headerOfPage = new HeaderOfPage(driver);
     private PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);

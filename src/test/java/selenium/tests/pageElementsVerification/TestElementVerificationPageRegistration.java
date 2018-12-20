@@ -20,11 +20,12 @@ public class TestElementVerificationPageRegistration extends TestBase {
 
         LOGGER.info("go to PageRegistration");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
+        //pageShopSignIn.waitForPageLoading(5);
         pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
         pageShopSignIn.getButtonCreateAnAccount().click();
 
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-        pageShopRegistration.waitUntilLoaded();
+        pageShopRegistration.waitForPageLoading(60);
         SoftAssert softAssert = new SoftAssert();
 
         LOGGER.info("verify personalInfo");

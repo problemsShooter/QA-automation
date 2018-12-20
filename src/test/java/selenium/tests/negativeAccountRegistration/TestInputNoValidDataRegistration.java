@@ -183,7 +183,6 @@ public class TestInputNoValidDataRegistration extends TestBase {
         pageShopRegistration.getPersonalAddress().getMobilePhone().clear();
         pageShopRegistration.getPersonalAddress().getMobilePhone().sendKeys("8(999) 626 00 00");
 
-
         softAssert.assertAll();
     }
 }

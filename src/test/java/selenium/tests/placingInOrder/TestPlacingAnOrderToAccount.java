@@ -33,7 +33,7 @@ public class TestPlacingAnOrderToAccount extends TestBase {
         LOGGER.info("make out an order");
         pageShop.getBtnWomen().click();
         PageOrderToCard pageOrderToCard = new PageOrderToCard(driver);
-        pageOrderToCard.waitUntilLoaded();
+        pageOrderToCard.waitForPageLoading(5);
         pageOrderToCard.getBtnAddBlouseToCard().click();
         pageOrderToCard.getBtnProceedToCheckOutFirst().click();
         pageOrderToCard.getBtnProceedToCheckOutSecond().click();

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.How;
 import java.io.IOException;
 
 @Data
-public class PageShopRegistration extends PageShop{
+public class PageShopRegistration extends PageBase{
 
     private PagePersonalInformation personInfo = new PagePersonalInformation(driver);
     private PagePersonalAddress personalAddress = new PagePersonalAddress(driver);

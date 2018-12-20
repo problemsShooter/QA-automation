@@ -34,6 +34,7 @@ public class PageShop extends PageBase {
     }
 
     public void waitUntilPageLoaded() {
+        //super();
     }
 
     public String getTitle() {
