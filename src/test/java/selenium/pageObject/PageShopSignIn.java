@@ -23,6 +23,11 @@ public class PageShopSignIn extends PageShop {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"email\"]")
     private WebElement inputEmailForSignIn;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"passwd\"]")
+    private WebElement inputPassword;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"SubmitLogin\"]/span")
+    private WebElement btnSignIn;
 
     public static String baseUrl;
 

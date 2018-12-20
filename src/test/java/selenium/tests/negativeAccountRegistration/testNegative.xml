@@ -4,7 +4,7 @@
     <test name="numbersXML">
 
         <classes>
-            <class name="selenium.tests.negative.TestInputNoValidDataRegistration">
+            <class name="selenium.tests.negativeAccountRegistration.TestInputNoValidDataRegistration">
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
                     <parameter name="keyTypeUsersForCheck" value="usersNotValidData"/>

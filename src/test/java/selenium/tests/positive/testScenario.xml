@@ -11,14 +11,14 @@
                     <include name="verifyUserAccountData"/>
                 </methods>
             </class>-->
-            <class name="selenium.tests.TestEditAccountData">
+            <class name="selenium.tests.positive.TestEditAccountData">
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
                     <parameter name="keyTypeUsersForCheck" value="usersForEditData"/>
                     <include name="testEditAccountData"/>
                 </methods>
             </class>
-            <class name="selenium.tests.TestAccountData">
+            <class name="selenium.tests.positive.TestAccountData">
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
                     <parameter name="keyTypeUsersForCheck" value="usersForEditData"/>

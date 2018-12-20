@@ -1,4 +1,4 @@
-package selenium.tests;
+package selenium.tests.positive;
 
 import models.User;
 import org.testng.annotations.DataProvider;

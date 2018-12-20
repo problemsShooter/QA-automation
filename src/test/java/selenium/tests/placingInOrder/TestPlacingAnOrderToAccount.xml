@@ -3,11 +3,11 @@
 <suite name="Suite1" verbose = "1">
     <test name="numbersXML">
         <classes>
-            <class name="selenium.tests.TestEditAccountData">
+            <class name="selenium.tests.placingInOrder.TestPlacingAnOrderToAccount">
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
-                    <parameter name="keyTypeUsersForCheck" value="usersForEditData"/>
-                    <include name="testEditAccountData"/>
+                    <parameter name="keyTypeUsersForCheck" value="RegisteredUsers"/>
+                    <include name="placingAnOrderToAccount"/>
                 </methods>
             </class>
         </classes>

@@ -1,4 +1,4 @@
-package selenium.tests;
+package selenium.tests.positive;
 
 import models.User;
 import org.apache.logging.log4j.LogManager;
@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import selenium.data.DataPool;
-
-import java.util.HashMap;
 
 
 public class TestBase {

@@ -1,15 +1,14 @@
-package selenium.tests.negative;
+package selenium.tests.negativeAccountRegistration;
 
 import models.User;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import selenium.actions.ClearPersonalData;
 import selenium.actions.Registration;
 import selenium.pageObject.PageShopRegistration;
 import selenium.pageObject.PageShopSignIn;
-import selenium.tests.TestBase;
+import selenium.tests.positive.TestBase;
 
 public class TestInputNoValidDataRegistration extends TestBase {
     @DataProvider(name = "users")

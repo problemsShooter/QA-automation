@@ -1,4 +1,4 @@
-package selenium.tests;
+package selenium.tests.positive;
 
 import models.User;
 import org.apache.logging.log4j.LogManager;
