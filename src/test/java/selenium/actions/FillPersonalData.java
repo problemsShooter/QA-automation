@@ -11,7 +11,7 @@ public class FillPersonalData {
     private static final Logger LOGGER = LogManager.getLogger(
             FillPersonalData.class.getName());
     public static void fillPersonalData(PageShopRegistration page, User user){
-        page.waitForPageLoading(5);
+       // page.waitForPageLoading(5);
         LOGGER.info("input fields firstName, secondName, sex and password");
         if(user.getSex().getSex().equals("Mr"))page.getPersonInfo().getRadioButtonMr().click();
         if(user.getSex().getSex().equals("Mrs"))page.getPersonInfo().getRadioButtonMrs().click();
@@ -39,7 +39,6 @@ public class FillPersonalData {
         page.getFirstName().clear();
         page.getSecondName().clear();
         page.getInputEmail().clear();
-        page.waitForPageLoading(5);
 
         LOGGER.info("input fields firstName, secondName, sex and password");
         if(user.getSex().getSex().equals("Mr"))page.getRadioButtonMr().click();

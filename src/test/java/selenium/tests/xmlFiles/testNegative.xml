@@ -7,7 +7,6 @@
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
                     <parameter name="keyTypeUsersForCheck" value="usersNotValidData"/>
-                    <include name="verifyEmptyField"/>
                     <include name="verifyNotValidData"/>
                 </methods>
             </class>

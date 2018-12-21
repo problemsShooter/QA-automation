@@ -19,5 +19,4 @@ public class HeaderOfPage {
         PageFactory.initElements(driver, this);
     }
 
-
 }

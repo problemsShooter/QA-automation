@@ -14,13 +14,14 @@ public class FillPersonalAddress {
 
     public static void fillPersonalAddress(PageShopRegistration page, User user) {
         page.getPersonalAddress().getAdditionalInformation().clear();
+        page.getPersonalAddress().getAsignAddress().clear();
         LOGGER.info("input phone address and other fields");
         page.getPersonalAddress().getAddress().sendKeys(user.getAddress());
         page.getPersonalAddress().getAdditionalAddress().sendKeys(user.getAdditionalAddress());
         page.getPersonalAddress().getCity().sendKeys(user.getCity());
         Select sel;
         sel = new Select(page.getPersonalAddress().getState());
-        sel.selectByValue(String.valueOf(user.getState().ordinal()));
+        if (user.getState().ordinal() != 0) sel.selectByValue(String.valueOf(user.getState().ordinal()));
 
         page.getPersonalAddress().getPostalCod().sendKeys(user.getPostalCod());
         sel = new Select(page.getPersonalAddress().getCountry());

@@ -1,6 +1,8 @@
 package selenium.tests.negativeAccountRegistration;
 
 import models.User;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,6 +11,8 @@ import selenium.actions.Registration;
 import selenium.pageObject.PageShopRegistration;
 import selenium.pageObject.PageShopSignIn;
 import selenium.tests.positive.TestBase;
+
+import java.util.List;
 
 public class TestInputNoValidDataRegistration extends TestBase {
     @DataProvider(name = "users")
@@ -35,154 +39,57 @@ public class TestInputNoValidDataRegistration extends TestBase {
     }
 
     @Test(dataProvider = "users")
-    public void verifyEmptyField(User user) {
-        SoftAssert softAssert = new SoftAssert();
-        PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
-        pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
-        pageShopSignIn.getButtonCreateAnAccount().click();
-
-
-        PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-        LOGGER.info("Info Message: verifyFieldFirstNameIsEmpty");
-
-
-        LOGGER.info("input necessary fields for registration without firstName");
-        user.setFirstName("");
-        Registration.registration(pageShopRegistration, user);
-        softAssert.assertTrue(isTextPresent("firstname", " is required."));
-        pageShopRegistration.getPersonInfo().getFirstName().sendKeys("Ser");
-
-
-        LOGGER.info("input necessary fields for registration without secondName");
-        pageShopRegistration.getPersonInfo().getSecondName().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("lastname", " is required."));
-        pageShopRegistration.getPersonInfo().getSecondName().sendKeys("Petrov");
-
-
-       LOGGER.info("input necessary fields for registration without email");
-        pageShopRegistration.getPersonInfo().getInputEmail().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("email", " is required."));
-        pageShopRegistration.getPersonInfo().getInputEmail().sendKeys("Ivvvdvvvcbvvvvvvcvvvcvvcvvvcvvvvvvvvvvvvvvvvvvvvvv.Iv@mail.ru");
-
-        LOGGER.info("input necessary fields for registration without password");
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("password", " is required."));
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys("password");
-
-
-        LOGGER.info("input necessary fields for registration without address");
-        pageShopRegistration.getPersonalAddress().getAddress().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("address", " is required."));
-        pageShopRegistration.getPersonalAddress().getAddress().sendKeys("address1");
-
-        LOGGER.info("input necessary fields for registration without city");
-        pageShopRegistration.getPersonalAddress().getCity().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("city", " is required."));
-        pageShopRegistration.getPersonalAddress().getCity().sendKeys("city");
-
-        LOGGER.info("input necessary fields for registration without any phone");
-        pageShopRegistration.getPersonalAddress().getMobilePhone().clear();
-        pageShopRegistration.getPersonalAddress().getHomePhone().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("You must register at least one phone number."));
-        pageShopRegistration.getPersonalAddress().getMobilePhone().sendKeys("8(999) 666 66 66");
-
-        LOGGER.info("input necessary fields for registration without any postalCode");
-        pageShopRegistration.getPersonalAddress().getPostalCod().clear();
-        pageShopRegistration.getPersonalAddress().getHomePhone().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("The Zip/Postal code you've entered is invalid. It must follow this format: 00000"));
-        pageShopRegistration.getPersonalAddress().getPostalCod().sendKeys("56783");
-
-        LOGGER.info("input necessary fields for registration without any alias");
-        pageShopRegistration.getPersonalAddress().getAsignAddress().clear();
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("alias", " is required."));
-        pageShopRegistration.getPersonalAddress().getAsignAddress().sendKeys("asignAddress");
-
-
-        softAssert.assertAll();
-    }
-
-    @Test(dataProvider = "users")
     public void verifyNotValidData(User user) {
         SoftAssert softAssert = new SoftAssert();
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
         pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
         pageShopSignIn.getButtonCreateAnAccount().click();
 
+        PageShopRegistration pageShopRegistration = PageShopRegistration.open(driver);
+        LOGGER.info("Info Message: verifyFieldFirstNameIsEmpty");
+        pageShopRegistration.waitSuccessfulMessage(driver, pageShopRegistration.getPersonInfo().getRadioButtonMr());
 
-        PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-        LOGGER.info("Info Message: verifyNotValidData");
-
-        LOGGER.info("input necessary fields for registration with not valid PostalCod");
-        user.setPostalCod("qwerty");
         Registration.registration(pageShopRegistration, user);
-        softAssert.assertTrue(isTextPresent("The Zip/Postal code you've entered is invalid. It must follow this format: 00000"));
-        pageShopRegistration.getPersonalAddress().getPostalCod().clear();
-        pageShopRegistration.getPersonalAddress().getPostalCod().sendKeys("56785");
 
-        LOGGER.info("input necessary fields for registration with not valid firstname");
-        pageShopRegistration.getPersonInfo().getFirstName().clear();
+        List<WebElement> errors = driver.findElements(By.xpath("//*[contains(@id,'center_column')]/div/ol/li"));
+        softAssert.assertTrue(isTextPresent("error"));
+
+        softAssert.assertEquals("You must register at least one phone number.", errors.get(0).getText());
+        softAssert.assertEquals("lastname is required.", errors.get(1).getText());
+        softAssert.assertEquals("firstname is required.", errors.get(2).getText());
+        softAssert.assertEquals("passwd is required.", errors.get(3).getText());
+        softAssert.assertEquals("alias is required.", errors.get(4).getText());
+        softAssert.assertEquals("address1 is required.", errors.get(5).getText());
+        softAssert.assertEquals("city is required.", errors.get(6).getText());
+        softAssert.assertEquals("The Zip/Postal code you've entered is invalid. It must follow this format: 00000", errors.get(7).getText());
+        softAssert.assertEquals("This country requires you to choose a State.", errors.get(8).getText());
+
+        Select sel;
         pageShopRegistration.getPersonInfo().getFirstName().sendKeys("99999");
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("firstname", " is invalid."));
-        pageShopRegistration.getPersonInfo().getFirstName().clear();
-        pageShopRegistration.getPersonInfo().getFirstName().sendKeys("Ser");
-
-        LOGGER.info("input necessary fields for registration with not valid secondname");
-        pageShopRegistration.getPersonInfo().getSecondName().clear();
         pageShopRegistration.getPersonInfo().getSecondName().sendKeys("99999");
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("lastname", " is invalid."));
-        pageShopRegistration.getPersonInfo().getSecondName().clear();
-        pageShopRegistration.getPersonInfo().getSecondName().sendKeys("Petrov");
-
-        LOGGER.info("input necessary fields for registration with not valid password");
         pageShopRegistration.getPersonInfo().getPassword().sendKeys("123");
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("password", " is invalid."));
-
-        LOGGER.info("input necessary fields for registration with not valid mail");
+        pageShopRegistration.getPersonalAddress().getAsignAddress().sendKeys("qweqw");
+        pageShopRegistration.getPersonalAddress().getAddress().sendKeys("qweqw");
         pageShopRegistration.getPersonInfo().getInputEmail().clear();
         pageShopRegistration.getPersonInfo().getInputEmail().sendKeys("qwewerert");
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("email", " is invalid."));
-        pageShopRegistration.getPersonInfo().getInputEmail().clear();
-        pageShopRegistration.getPersonInfo().getInputEmail().sendKeys("Ivvvvvvcbvvvvvvcvvvcvvcvvvcvvvvvvvvvvvvvvvvvvvvvv.Iv@mail.ru");
-
-        LOGGER.info("input necessary fields for registration with not valid state");
-        Select sel;
-        sel = new Select(pageShopRegistration.getPersonalAddress().getState());
-        sel.selectByVisibleText("-");
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
-        pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("This country requires you to choose a State."));
-        sel.selectByValue(String.valueOf(user.getState().ordinal()));
-
-        LOGGER.info("input necessary fields for registration with not valid mobilePhone");
-        pageShopRegistration.getPersonalAddress().getMobilePhone().clear();
         pageShopRegistration.getPersonalAddress().getMobilePhone().sendKeys("qwewerert");
-        pageShopRegistration.getPersonInfo().getPassword().sendKeys(user.getPassword());
+        pageShopRegistration.getPersonalAddress().getPostalCod().sendKeys("67543");
+        sel = new Select(pageShopRegistration.getPersonalAddress().getCountry());
+        sel.selectByValue(String.valueOf(user.getCountry().ordinal() + 20));//so strange number on a the site's page
+
+        sel = new Select(pageShopRegistration.getPersonalAddress().getState());
+        sel.selectByValue(String.valueOf(3));
+
+        errors.clear();
         pageShopRegistration.getButtonRegister().click();
-        softAssert.assertTrue(isTextPresent("phone_mobile", " is invalid."));
-        pageShopRegistration.getPersonalAddress().getMobilePhone().clear();
-        pageShopRegistration.getPersonalAddress().getMobilePhone().sendKeys("8(999) 626 00 00");
+        errors = driver.findElements(By.xpath("//*[contains(@id,'center_column')]/div/ol/li"));
+        softAssert.assertEquals("lastname is invalid.",errors.get(0).getText());
+        softAssert.assertEquals("firstname is invalid.",errors.get(1).getText());
+        softAssert.assertEquals("email is invalid.",errors.get(2).getText());
+        softAssert.assertEquals("passwd is invalid.",errors.get(3).getText());
+        softAssert.assertEquals("phone_mobile is invalid.",errors.get(5).getText());
 
         softAssert.assertAll();
     }
+
 }
