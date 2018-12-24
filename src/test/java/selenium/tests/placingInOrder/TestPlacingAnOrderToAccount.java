@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import selenium.pageObject.HeaderOfPage;
 import selenium.pageObject.PageOrderToCard;
 import selenium.pageObject.PageShop;
 import selenium.pageObject.PageShopSignIn;
@@ -34,7 +35,7 @@ public class TestPlacingAnOrderToAccount extends TestBase {
         pageShop.getBtnWomen().click();
         PageOrderToCard pageOrderToCard = new PageOrderToCard(driver);
         pageOrderToCard.getBtnAddBlouseToCard().click();
-        pageOrderToCard.waitSuccessfulMessage(driver,pageOrderToCard.getBtnProceedToCheckOutFirst());
+        pageOrderToCard.waitForPageLoaded(driver);
         pageOrderToCard.getBtnProceedToCheckOutFirst().click();
         pageOrderToCard.getBtnProceedToCheckOutSecond().click();
         pageOrderToCard.getBtnProceedToCheckOutThird().click();
@@ -48,7 +49,13 @@ public class TestPlacingAnOrderToAccount extends TestBase {
         LOGGER.info("got link of new order");
         pageOrderToCard.getBtnBackToOrders().click();
         String bodyText = driver.findElement(By.tagName("body")).getText();
+
+        HeaderOfPage headerOfPage = new HeaderOfPage(driver);
+        headerOfPage.getBtnSignOut().click();
+        pageShopSignIn.waitForPageLoaded(driver);
+
         Assert.assertTrue(bodyText.contains(link), "Text not found!");
+
 
     }
 }

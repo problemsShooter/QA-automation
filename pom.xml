@@ -21,17 +21,20 @@
                 <version>3.0.0-M2</version>
                 <configuration>
                     <suiteXmlFiles>
-                       <file>src/test/java/selenium/tests/xmlFiles/testNegative.xml</file>
+                        <!--<file>src/test/java/selenium/tests/xmlFiles/testRegistration.xml</file>-->
+                        <file>src/test/java/selenium/tests/xmlFiles/testEditDataUsers.xml</file>
                         <file>src/test/java/selenium/tests/xmlFiles/testScenario.xml</file>
-                        <!--<file>src/test/java/selenium/tests/xmlFiles/testPlacingAnOrderToAccount.xml</file>-->
                         <file>src/test/java/selenium/tests/xmlFiles/testElementVerificationPageRegistration.xml</file>
-                        <!--<file>src/test/java/selenium/tests/xmlFiles/testEditDataUsers.xml</file>-->
+                        <file>src/test/java/selenium/tests/xmlFiles/testNegative.xml</file>
+                        <file>src/test/java/selenium/tests/xmlFiles/testPlacingAnOrderToAccount.xml</file>
+
+
                     </suiteXmlFiles>
 
                     <properties>
                         <property>
                             <name>suitethreadpoolsize</name>
-                            <value>3</value>
+                            <value>2</value>
                         </property>
                     </properties>
 
@@ -39,12 +42,8 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
 
-
-
                 </configuration>
             </plugin>
-
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

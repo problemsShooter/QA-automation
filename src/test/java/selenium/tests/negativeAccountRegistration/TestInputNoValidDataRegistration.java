@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import selenium.actions.Registration;
+import selenium.pageObject.HeaderOfPage;
 import selenium.pageObject.PageShopRegistration;
 import selenium.pageObject.PageShopSignIn;
 import selenium.tests.positive.TestBase;
@@ -44,12 +45,14 @@ public class TestInputNoValidDataRegistration extends TestBase {
     public void verifyNotValidData(User user) throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
+        pageShopSignIn.waitForPageLoaded(driver);
         pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
         pageShopSignIn.getButtonCreateAnAccount().click();
 
         PageShopRegistration pageShopRegistration = PageShopRegistration.open(driver);
         LOGGER.info("Info Message: verifyFieldFirstNameIsEmpty");
-        pageShopRegistration.waitSuccessfulMessage(driver, pageShopRegistration.getPersonInfo().getRadioButtonMr());
+        //pageShopRegistration.waitSuccessfulMessage(driver, pageShopRegistration.getPersonInfo().getRadioButtonMr());
+        pageShopRegistration.waitForPageLoaded(driver);
 //pageShopRegistration.waitForPageLoading(10);
         Registration registration = new Registration();
 
@@ -94,6 +97,7 @@ public class TestInputNoValidDataRegistration extends TestBase {
         softAssert.assertEquals("phone_mobile is invalid.",errors.get(5).getText());
 
         softAssert.assertAll();
+
     }
 
 }

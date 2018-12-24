@@ -13,7 +13,7 @@ public class PageOrderHistory extends PageBase {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"order-list\"]/tbody/tr[1]/td[1]/span")
     private WebElement btnShowPDF;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"order-list\"]/tbody/tr[2]/td/div/div[3]/div[2]/a")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"order-list\"]/tbody/tr[1]/td[6]/a")
     private WebElement btnDownloadPDF;
 
     public static String baseUrl;

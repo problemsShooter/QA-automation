@@ -5,6 +5,7 @@ import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import selenium.actions.CheckVerification;
+import selenium.pageObject.HeaderOfPage;
 import selenium.pageObject.PagePersonalAddress;
 import selenium.pageObject.PagePersonalInformation;
 import selenium.pageObject.PageShopSignIn;
@@ -43,7 +44,14 @@ public class TestAccountData extends TestBase {
 
         checkVerification.checkMyPersonalAddress(pagePersonalAddress, user).assertAll();
 
+
+
         pagePersonalAddress.getBtnBackToYourAddresses().click();
+
+        HeaderOfPage headerOfPage = new HeaderOfPage(driver);
+        headerOfPage.getBtnSignOut().click();
+       // pageShopSignIn.waitForPageLoaded(driver);
+
 
     }
 }

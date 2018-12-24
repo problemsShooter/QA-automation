@@ -40,5 +40,7 @@ public class TestRegistration extends TestBase {
 
         Assert.assertEquals(user.getFullName(), pageShopSignIn.getHeaderOfPage().getBtnMyAccount().getText(), "verifyTestRegistration is false");
         LOGGER.info("registration finished with success");
+        pageShopRegistration.getHeaderOfPage().getBtnSignOut().click();
+        pageShopSignIn.waitForPageLoaded(driver);
     }
 }

@@ -5,9 +5,7 @@ import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import selenium.actions.EditDataUsers;
-import selenium.pageObject.PagePersonalAddress;
-import selenium.pageObject.PagePersonalInformation;
-import selenium.pageObject.PageShopSignIn;
+import selenium.pageObject.*;
 
 public class TestEditAccountData extends TestBase{
 
@@ -38,7 +36,9 @@ public class TestEditAccountData extends TestBase{
         PagePersonalAddress pagePersonalAddress = new PagePersonalAddress(driver);
         pagePersonalAddress.getBtnUpdate().click();
         editDataUsers.editPersonalAddress(pagePersonalAddress,user);
-
+        HeaderOfPage headerOfPage = new HeaderOfPage(driver);
+        headerOfPage.getBtnSignOut().click();
+       //pageShopSignIn.waitForPageLoaded(driver);
 
     }
 }

@@ -4,6 +4,7 @@ import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import selenium.pageObject.HeaderOfPage;
 import selenium.pageObject.PageShopRegistration;
 import selenium.pageObject.PageShopSignIn;
 import selenium.tests.positive.TestBase;
@@ -25,7 +26,7 @@ public class TestElementVerificationPageRegistration extends TestBase {
 
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
         //pageShopRegistration.waitSuccessfulMessage(driver,pageShopRegistration.getPersonInfo().getRadioButtonMr());
-        pageShopRegistration.waitForPageLoading(10);
+        pageShopRegistration.waitForPageLoaded(driver);
         SoftAssert softAssert = new SoftAssert();
 
         LOGGER.info("verify personalInfo");
@@ -57,6 +58,11 @@ public class TestElementVerificationPageRegistration extends TestBase {
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAsignAddress().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getButtonRegister().isDisplayed());
 
+        HeaderOfPage headerOfPage = new HeaderOfPage(driver);
+        headerOfPage.getBtnSignOut().click();
+        pageShopSignIn.waitForPageLoaded(driver);
+
         softAssert.assertAll();
+
     }
 }

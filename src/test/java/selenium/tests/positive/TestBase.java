@@ -29,14 +29,13 @@ public class TestBase {
         dataUsersPool = new DataPool<User>(User.class);
         dataUsersPool.processDataFile(new User(), dataFile, keyTypeUsersForCheck);//file to pass in parameters
     }
-    @Parameters({"keyTypeUsersForCheck","dataFile"})
+
     @BeforeMethod
-    public void beforeMethod(String keyTypeUsersForCheck,String dataFile) {
-        String exePath = "C:\\JetBrains\\ChromeWebDriver\\chromedriver.exe";
+    public void beforeMethod() {
+        String exePath = "C:\\Set of program\\driverChrome\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", exePath);
         driver = new ChromeDriver();
-        dataUsersPool = new DataPool<User>(User.class);
-        dataUsersPool.processDataFile(new User(), dataFile, keyTypeUsersForCheck);//file to pass in parameters
+        driver.manage().window().maximize();
     }
 
     @AfterSuite
@@ -46,8 +45,8 @@ public class TestBase {
 
     @AfterMethod
     public void afterMethod() {
-//        driver.quit();
-//        driver = null;
+/*        driver.quit();
+        driver = null;*/
     }
 @AfterClass
 public void afterClass(){
