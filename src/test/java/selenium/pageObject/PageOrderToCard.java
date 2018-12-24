@@ -33,4 +33,5 @@ public class PageOrderToCard extends PageBase{
     @FindBy(how = How.XPATH, using = "//*[@id=\"center_column\"]/p/a")
     private WebElement btnBackToOrders;
 
+
 }

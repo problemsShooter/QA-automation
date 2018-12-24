@@ -1,5 +1,6 @@
 package selenium.tests.positive;
 
+import lombok.Data;
 import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +10,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.*;
 import selenium.data.DataPool;
 
-
+@Listeners(TakeScreenShotOnFailure.class)
 public class TestBase {
 
     static protected WebDriver driver;
@@ -28,12 +29,14 @@ public class TestBase {
         dataUsersPool = new DataPool<User>(User.class);
         dataUsersPool.processDataFile(new User(), dataFile, keyTypeUsersForCheck);//file to pass in parameters
     }
-
+    @Parameters({"keyTypeUsersForCheck","dataFile"})
     @BeforeMethod
-    public void beforeMethod() {
-        String exePath = "C:\\Set of program\\driverChrome\\chromedriver.exe";
+    public void beforeMethod(String keyTypeUsersForCheck,String dataFile) {
+        String exePath = "C:\\JetBrains\\ChromeWebDriver\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", exePath);
         driver = new ChromeDriver();
+        dataUsersPool = new DataPool<User>(User.class);
+        dataUsersPool.processDataFile(new User(), dataFile, keyTypeUsersForCheck);//file to pass in parameters
     }
 
     @AfterSuite

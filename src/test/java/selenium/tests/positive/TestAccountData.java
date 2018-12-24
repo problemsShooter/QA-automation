@@ -1,5 +1,6 @@
 package selenium.tests.positive;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,15 +9,16 @@ import selenium.pageObject.PagePersonalAddress;
 import selenium.pageObject.PagePersonalInformation;
 import selenium.pageObject.PageShopSignIn;
 
-public class TestAccountData extends TestBase{
+public class TestAccountData extends TestBase {
 
     @DataProvider(name = "users")
-    private Object[] dataProvider(){
+    private Object[] dataProvider() {
         return dataUsersPool.getData();
     }
 
-    @Test(dataProvider = "users")
-    public void verifyUserAccountData(User user){
+    @Test(description = "Account Test", dataProvider = "users")
+    @Step("Account Data" )
+    public void verifyUserAccountData(User user) throws InterruptedException {
         LOGGER.info("Started verify registration");
         PageShopSignIn page = PageShopSignIn.open(driver);
         page.getInputEmailForSignIn().sendKeys(user.getEmail());
@@ -26,7 +28,10 @@ public class TestAccountData extends TestBase{
 
         page.getBtnMyPersonalInformation().click();
         PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);
-        CheckVerification.checkMyPersonalInformation(pagePersonalInformation,user).assertAll();
+
+        CheckVerification checkVerification = new CheckVerification();
+
+        checkVerification.checkMyPersonalInformation(pagePersonalInformation, user).assertAll();
 
         pagePersonalInformation.getBtnToYourAccount().click();
 
@@ -34,7 +39,9 @@ public class TestAccountData extends TestBase{
         PagePersonalAddress pagePersonalAddress = new PagePersonalAddress(driver);
         pagePersonalAddress.getBtnUpdate().click();
 
-        CheckVerification.checkMyPersonalAddress(pagePersonalAddress,user).assertAll();
+        //CheckVerification checkVerification = new CheckVerification();
+
+        checkVerification.checkMyPersonalAddress(pagePersonalAddress, user).assertAll();
 
         pagePersonalAddress.getBtnBackToYourAddresses().click();
 

@@ -24,11 +24,12 @@ public class TestElementVerificationPageRegistration extends TestBase {
         pageShopSignIn.getButtonCreateAnAccount().click();
 
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-        pageShopRegistration.waitSuccessfulMessage(driver,pageShopRegistration.getButtonRegister());
+        //pageShopRegistration.waitSuccessfulMessage(driver,pageShopRegistration.getPersonInfo().getRadioButtonMr());
+        pageShopRegistration.waitForPageLoading(10);
         SoftAssert softAssert = new SoftAssert();
 
         LOGGER.info("verify personalInfo");
-        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getRadioButtonMr().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getRadioButtonMr().isDisplayed(),"Mr isn't displayed");
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getRadioButtonMrs().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getFirstName().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getSecondName().isDisplayed());
@@ -43,7 +44,7 @@ public class TestElementVerificationPageRegistration extends TestBase {
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getBtnReceiveSpecialOffersFromOurPartners().isDisplayed());
 
         LOGGER.info("verify personalAddress");
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCompany().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCompany().isDisplayed(),"Company is not displayed");
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAddress().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAdditionalAddress().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCity().isDisplayed());

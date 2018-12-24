@@ -10,9 +10,10 @@ import selenium.pageObject.PageShopRegistration;
 public class FillPersonalData {
     private static final Logger LOGGER = LogManager.getLogger(
             FillPersonalData.class.getName());
-    public static void fillPersonalData(PageShopRegistration page, User user){
+    public void fillPersonalData(PageShopRegistration page, User user){
        // page.waitForPageLoading(5);
         LOGGER.info("input fields firstName, secondName, sex and password");
+
         if(user.getSex().getSex().equals("Mr"))page.getPersonInfo().getRadioButtonMr().click();
         if(user.getSex().getSex().equals("Mrs"))page.getPersonInfo().getRadioButtonMrs().click();
         page.getPersonInfo().getFirstName().sendKeys(user.getFirstName());
@@ -34,7 +35,7 @@ public class FillPersonalData {
         if(user.isReceiveSpecialOffersFromOurPartners())page.getPersonInfo().getBtnReceiveSpecialOffersFromOurPartners().click();
     }
 
-    public static void editPersonalInformation(PagePersonalInformation page, User user){
+    public void editPersonalInformation(PagePersonalInformation page, User user){
         LOGGER.info("started edit PersonalInformation");
         page.getFirstName().clear();
         page.getSecondName().clear();

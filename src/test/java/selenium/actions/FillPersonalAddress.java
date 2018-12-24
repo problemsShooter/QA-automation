@@ -12,7 +12,7 @@ public class FillPersonalAddress {
     private static final Logger LOGGER = LogManager.getLogger(
             FillPersonalAddress.class.getName());
 
-    public static void fillPersonalAddress(PageShopRegistration page, User user) {
+    public void fillPersonalAddress(PageShopRegistration page, User user) {
         page.getPersonalAddress().getAdditionalInformation().clear();
         page.getPersonalAddress().getAsignAddress().clear();
         LOGGER.info("input phone address and other fields");
@@ -33,7 +33,7 @@ public class FillPersonalAddress {
         page.getPersonalAddress().getCompany().sendKeys(user.getCompany());
     }
 
-    public static void editPersonalAddress(PagePersonalAddress page, User user) {
+    public void editPersonalAddress(PagePersonalAddress page, User user) {
 
         LOGGER.info("started edit PersonalAddress");
         page.getAddress().clear();

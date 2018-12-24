@@ -1,5 +1,6 @@
 package selenium.tests.positive;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +20,8 @@ public class TestRegistration extends TestBase {
         return dataUsersPool.getData();
     }
 
-    @Test(dataProvider = "users")
+    @Test(dataProvider = "users",  description = "Create an Account Test" )
+    @Step( "Create a new account" )
     public void verifyUserRegistration(User user) {
         LOGGER.info("Info Message: verifyUserRegistration has been run !!!");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
@@ -33,7 +35,8 @@ public class TestRegistration extends TestBase {
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
 
         LOGGER.info("input necessary fields for registration");
-        Registration.registration(pageShopRegistration, user);
+        Registration registration = new Registration();
+        registration.registration(pageShopRegistration, user);
 
         Assert.assertEquals(user.getFullName(), pageShopSignIn.getHeaderOfPage().getBtnMyAccount().getText(), "verifyTestRegistration is false");
         LOGGER.info("registration finished with success");

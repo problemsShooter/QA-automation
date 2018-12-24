@@ -5,10 +5,12 @@ import selenium.pageObject.PagePersonalAddress;
 import selenium.pageObject.PagePersonalInformation;
 
 public class EditDataUsers {
-    public static void editPersonalInfo(PagePersonalInformation page, User user){
-        FillPersonalData.editPersonalInformation(page, user);
+    public void editPersonalInfo(PagePersonalInformation page, User user){
+        FillPersonalData fillPersonalData = new FillPersonalData();
+        fillPersonalData.editPersonalInformation(page, user);
     }
-    public static void editPersonalAddress(PagePersonalAddress page, User user){
-        FillPersonalAddress.editPersonalAddress(page, user);
+    public void editPersonalAddress(PagePersonalAddress page, User user){
+        FillPersonalAddress fillPersonalAddress = new FillPersonalAddress();
+        fillPersonalAddress.editPersonalAddress(page, user);
     }
 }

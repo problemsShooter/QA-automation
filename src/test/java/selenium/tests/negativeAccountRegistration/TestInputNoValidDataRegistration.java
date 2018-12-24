@@ -1,5 +1,6 @@
 package selenium.tests.negativeAccountRegistration;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -38,8 +39,9 @@ public class TestInputNoValidDataRegistration extends TestBase {
         }
     }
 
-    @Test(dataProvider = "users")
-    public void verifyNotValidData(User user) {
+    @Test(dataProvider = "users",description = "Edit Account Negative Test")
+    @Step( "Update Account with invalid values and verify errors" )
+    public void verifyNotValidData(User user) throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
         pageShopSignIn.getPagePersonalInformation().getInputEmail().sendKeys(user.getEmail());
@@ -48,8 +50,10 @@ public class TestInputNoValidDataRegistration extends TestBase {
         PageShopRegistration pageShopRegistration = PageShopRegistration.open(driver);
         LOGGER.info("Info Message: verifyFieldFirstNameIsEmpty");
         pageShopRegistration.waitSuccessfulMessage(driver, pageShopRegistration.getPersonInfo().getRadioButtonMr());
+//pageShopRegistration.waitForPageLoading(10);
+        Registration registration = new Registration();
 
-        Registration.registration(pageShopRegistration, user);
+        registration.registration(pageShopRegistration, user);
 
         List<WebElement> errors = driver.findElements(By.xpath("//*[contains(@id,'center_column')]/div/ol/li"));
         softAssert.assertTrue(isTextPresent("error"));

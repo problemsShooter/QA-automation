@@ -1,5 +1,6 @@
 package selenium.tests.positive;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +16,8 @@ public class TestEditAccountData extends TestBase{
         return dataUsersPool.getData();
     }
 
-    @Test(dataProvider = "usersForEditData")
+    @Test(dataProvider = "usersForEditData", description = "Edit account Data" )
+    @Step( "Verify edit account Data." )
     public void testEditAccountData(User user) {
         LOGGER.info("Started edit data");
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
@@ -27,13 +29,15 @@ public class TestEditAccountData extends TestBase{
         pageShopSignIn.getBtnMyPersonalInformation().click();
         PagePersonalInformation pagePersonalInformation = new PagePersonalInformation(driver);
 
-        EditDataUsers.editPersonalInfo(pagePersonalInformation, user);
+        EditDataUsers editDataUsers = new EditDataUsers();
+
+        editDataUsers.editPersonalInfo(pagePersonalInformation, user);
         pagePersonalInformation.getBtnToYourAccount().click();
         pageShopSignIn.getBtnMyAddress().click();
 
         PagePersonalAddress pagePersonalAddress = new PagePersonalAddress(driver);
         pagePersonalAddress.getBtnUpdate().click();
-        EditDataUsers.editPersonalAddress(pagePersonalAddress,user);
+        editDataUsers.editPersonalAddress(pagePersonalAddress,user);
 
 
     }

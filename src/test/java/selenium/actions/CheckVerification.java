@@ -14,7 +14,10 @@ public class CheckVerification {
     private static final Logger LOGGER = LogManager.getLogger(
             CheckVerification.class.getName());
 
-    public static SoftAssert checkMyPersonalInformation(PagePersonalInformation page, User user) {
+    public CheckVerification() {
+    }
+
+    public SoftAssert checkMyPersonalInformation(PagePersonalInformation page, User user) {
         LOGGER.info("started check PersonalInformation");
         SoftAssert softAssert = new SoftAssert();
 
@@ -31,7 +34,7 @@ public class CheckVerification {
         softAssert.assertEquals(page.getYearOfBirthday().getAttribute("value"), user.getYear());
         return softAssert;
     }
-    public static SoftAssert checkMyPersonalAddress(PagePersonalAddress page, User user) {
+    public SoftAssert checkMyPersonalAddress(PagePersonalAddress page, User user) {
         LOGGER.info("started check PersonalAddress");
         SoftAssert softAssert = new SoftAssert();
         LOGGER.info("check address and additional address");
