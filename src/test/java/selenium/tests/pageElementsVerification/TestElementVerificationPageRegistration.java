@@ -25,42 +25,42 @@ public class TestElementVerificationPageRegistration extends TestBase {
         pageShopSignIn.getButtonCreateAnAccount().click();
 
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-        //pageShopRegistration.waitSuccessfulMessage(driver,pageShopRegistration.getPersonInfo().getRadioButtonMr());
+        pageShopRegistration.waitSuccessfulMessage(driver,pageShopRegistration.getPersonInfo().getRadioButtonMr());
         pageShopRegistration.waitForPageLoaded(driver);
         SoftAssert softAssert = new SoftAssert();
 
         LOGGER.info("verify personalInfo");
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getRadioButtonMr().isDisplayed(),"Mr isn't displayed");
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getRadioButtonMrs().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getFirstName().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getSecondName().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getFirstName().isDisplayed(),"7");
+        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getSecondName().isDisplayed(),"8");
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getInputEmail().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getPassword().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getPassword().isDisplayed(),"9");
 
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getDayOfBirthday().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getMonthOfBirthday().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getYearOfBirthday().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonInfo().getYearOfBirthday().isDisplayed(),"10");
 
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getBtnSignUpForOurNewsletter().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonInfo().getBtnReceiveSpecialOffersFromOurPartners().isDisplayed());
 
         LOGGER.info("verify personalAddress");
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCompany().isDisplayed(),"Company is not displayed");
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAddress().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAdditionalAddress().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCity().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getState().isEnabled());
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAddress().isDisplayed(),"1");
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAdditionalAddress().isDisplayed(),"2");
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCity().isDisplayed(),"3");
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getState().isEnabled(),"4");
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getPostalCod().isEnabled());
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getCountry().isDisplayed());
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAdditionalInformation().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getHomePhone().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getHomePhone().isDisplayed(),"5");
         softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getMobilePhone().isDisplayed());
-        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAsignAddress().isDisplayed());
+        softAssert.assertTrue(pageShopRegistration.getPersonalAddress().getAsignAddress().isDisplayed(),"6");
         softAssert.assertTrue(pageShopRegistration.getButtonRegister().isDisplayed());
 
-        HeaderOfPage headerOfPage = new HeaderOfPage(driver);
+        /*HeaderOfPage headerOfPage = new HeaderOfPage(driver);
         headerOfPage.getBtnSignOut().click();
-        pageShopSignIn.waitForPageLoaded(driver);
+        pageShopSignIn.waitForPageLoaded(driver);*/
 
         softAssert.assertAll();
 

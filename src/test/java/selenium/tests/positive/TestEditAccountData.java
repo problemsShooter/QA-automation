@@ -38,7 +38,5 @@ public class TestEditAccountData extends TestBase{
         editDataUsers.editPersonalAddress(pagePersonalAddress,user);
         HeaderOfPage headerOfPage = new HeaderOfPage(driver);
         headerOfPage.getBtnSignOut().click();
-       //pageShopSignIn.waitForPageLoaded(driver);
-
     }
 }

@@ -1,5 +1,6 @@
 package selenium.tests.positive;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.apache.commons.io.FilenameUtils;
 import org.testng.Assert;
@@ -31,7 +32,8 @@ public class TestDownloadPDF extends TestBase {
     private Object[] dataProvider(){
         return dataUsersPool.getData();
     }
-    @Test(dataProvider = "users")
+    @Test(dataProvider = "users",description = "test download PDF")
+    @Step("test download PDF")
     public void testDownloadPDF(User user) throws InterruptedException {
         PageShopSignIn pageShopSignIn = PageShopSignIn.open(driver);
         pageShopSignIn.getInputEmailForSignIn().sendKeys(user.getEmail());

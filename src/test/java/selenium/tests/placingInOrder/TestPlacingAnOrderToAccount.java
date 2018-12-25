@@ -30,12 +30,12 @@ public class TestPlacingAnOrderToAccount extends TestBase {
         pageShopSignIn.getInputPassword().sendKeys(user.getPassword());
         pageShopSignIn.getBtnSignIn().click();
         PageShop pageShop = new PageShop(driver);
-        //pageShop.waitUntilPageLoaded();
+        pageShop.waitForPageLoaded(driver);
         LOGGER.info("make out an order");
         pageShop.getBtnWomen().click();
         PageOrderToCard pageOrderToCard = new PageOrderToCard(driver);
-        pageOrderToCard.getBtnAddBlouseToCard().click();
         pageOrderToCard.waitForPageLoaded(driver);
+        pageOrderToCard.getBtnAddBlouseToCard().click();
         pageOrderToCard.getBtnProceedToCheckOutFirst().click();
         pageOrderToCard.getBtnProceedToCheckOutSecond().click();
         pageOrderToCard.getBtnProceedToCheckOutThird().click();

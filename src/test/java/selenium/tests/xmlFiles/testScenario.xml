@@ -3,13 +3,6 @@
 <suite name="Suite1" verbose="1">
     <test name="numbersXML">
         <classes>
-            <!--<class name="selenium.tests.TestAccountData">
-                <methods>
-                    <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>
-                    <parameter name="keyTypeUsersForCheck" value="users"/>
-                    <include name="verifyUserAccountData"/>
-                </methods>
-            </class>-->
             <class name="selenium.tests.positive.TestEditAccountData">
                 <methods>
                     <parameter name="dataFile" value="src/test/java/selenium/data/dataUsers.json"/>

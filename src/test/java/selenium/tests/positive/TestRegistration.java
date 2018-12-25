@@ -33,7 +33,7 @@ public class TestRegistration extends TestBase {
 
         LOGGER.info("page shopRegistration was opened.");
         PageShopRegistration pageShopRegistration = new PageShopRegistration(driver);
-
+pageShopRegistration.waitForPageLoaded(driver);
         LOGGER.info("input necessary fields for registration");
         Registration registration = new Registration();
         registration.registration(pageShopRegistration, user);

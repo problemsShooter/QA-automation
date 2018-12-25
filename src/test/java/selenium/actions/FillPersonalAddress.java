@@ -29,7 +29,7 @@ public class FillPersonalAddress {
         page.getPersonalAddress().getAdditionalInformation().sendKeys(user.getAdditionalInformation());
         page.getPersonalAddress().getHomePhone().sendKeys(user.getHomePhone());
         page.getPersonalAddress().getMobilePhone().sendKeys(user.getMobilPhone());
-        //page.getPersonalAddress().getAsignAddress().sendKeys(user.getAssignAnAddressAliasForFutureReference());
+        page.getPersonalAddress().getAsignAddress().sendKeys(user.getAssignAnAddressAliasForFutureReference());
         page.getPersonalAddress().getCompany().sendKeys(user.getCompany());
     }
 

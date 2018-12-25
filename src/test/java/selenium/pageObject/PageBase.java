@@ -24,8 +24,8 @@ public class PageBase {
     }
 
     public void waitForPageLoaded(WebDriver driver) {
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        ExpectedCondition<Boolean> expectation = new
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        /*ExpectedCondition<Boolean> expectation = new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
                         return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
@@ -37,7 +37,7 @@ public class PageBase {
             wait.until(expectation);
         } catch (Throwable error) {
             Assert.fail("Timeout waiting for Page Load Request to complete.");
-        }
+        }*/
     }
 
 /*    public final void waitForPageLoading(int waitTimeInSeconds) {
@@ -61,9 +61,10 @@ public class PageBase {
                 return String.format("custom condition for page load");
             }
         });
-    }
+    }*/
 
     public void waitSuccessfulMessage(WebDriver driver,WebElement webElement) {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, waiterTime);
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
@@ -71,7 +72,7 @@ public class PageBase {
     public void waitSuccessfulMessage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, waiterTime);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("identity")));
-    }*/
+    }
 
 
     public void click(WebElement element) {
